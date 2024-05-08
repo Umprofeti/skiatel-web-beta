@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbo",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
@@ -24,6 +24,9 @@
     "@payloadcms/plugin-form-builder": "^1.2.1",
     "@payloadcms/richtext-lexical": "beta",
     "@payloadcms/richtext-slate": "^1.5.0",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^1.2.4",
     "cross-env": "^7.0.3",
     "next": "^14.3.0-canary.7",
     "payload": "beta",

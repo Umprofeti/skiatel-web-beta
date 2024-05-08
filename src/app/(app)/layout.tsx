@@ -3,6 +3,10 @@ import { getPayload } from 'payload'
 import configPromise from "@payload-config";
 import {WebConfig} from './types/globals'
 
+/* Components */
+import { DesktopHeader } from './components/DesktopHeader';
+import { MobileHeader } from './components/MobileHeader';
+
 const payload = await getPayload({ config: configPromise })
 
 const data = await payload.findGlobal({
@@ -10,7 +14,6 @@ const data = await payload.findGlobal({
   depth: 2,
 })
 
-console.log()
 export const metadata = {
   title: data.title,
   description: data.description,
@@ -23,9 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <header>
-          <h1>{data.title}</h1>
+      <body className='bg-primary'>
+        <header className='mb-[7rem] !z-50 relative'>
+           {/* Mobile */}
+           <MobileHeader props={data}/>
+            {/* Desktop */}
+            <DesktopHeader props={data}/>
         </header>
         <main>
         {children}

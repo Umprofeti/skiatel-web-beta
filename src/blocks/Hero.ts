@@ -22,7 +22,6 @@ const Hero:Block = {
         {
             type: 'checkbox',
             name: 'ShowCircleBackground',
-            required: true,
         }
     ]
 }

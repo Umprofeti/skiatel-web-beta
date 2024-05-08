@@ -1,3 +1,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@font-face {
+    font-family: 'aquire-regular';
+    src: url('/public/aquire-font/Aquire-BW0ox.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'aquire-bold';
+    src: url('/public/aquire-font/AquireBold-8Ma60.otf') format('opentype');
+}
+@font-face {
+    font-family: 'aquire-light';
+    src: url('/public/aquire-font/AquireLight-YzE0o.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'aeros';
+    src: url('/public/aeros-font/Aeros-rg5WA.ttf') format('truetype');
+}
+
+/* Establecer el color del scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #25252500;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #252525;
+    border-radius: 50px;
+  }
+  
+  /* Establecer el color de la barra de desplazamiento */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000;
+  }
+
+  .burger-menu-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.burger-menu-line {
+    width: 2rem;
+    border-radius: 10px;
+    height: 0.25rem;
+    background-color: #fff;
+}
+
+.burger-menu-button:hover .burger-menu-line {
+    background-color: #FF3253;
+    transition:all 0.2s ease;
+}
+
+@media (max-width: 1024px) {
+    .burger-menu-button {
+        display: flex;
+    }
+}

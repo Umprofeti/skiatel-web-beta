@@ -7,7 +7,7 @@ export type WebConfig = {
     Email: string
 }
 
-type Logo = {
+export type Logo = {
     id:string,
     filename:string,
     filesize:number,
@@ -16,7 +16,7 @@ type Logo = {
     url:string
 }
 
-type NavBarLinks =  [
+export type NavBarLinks =  [
     {
         Section: string,
         idSection: string
@@ -24,7 +24,7 @@ type NavBarLinks =  [
     }
 ]
 
-type SocialLinks = [
+export type SocialLinks = [
     {
         id: string,
         title:string,

@@ -15,10 +15,11 @@ const HeroTwo: Block = {
             required: true
         },
         {
-            type: 'upload',
+            type: 'relationship',
             relationTo: 'media',
-            name: 'Phtoto',
-            required: true
+            name: 'Photo',
+            required: true,
+            hasMany: false
         },
     ]
 }
