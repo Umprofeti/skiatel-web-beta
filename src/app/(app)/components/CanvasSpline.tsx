@@ -1,6 +1,5 @@
-'use client'
-import Spline from "@splinetool/react-spline";
 
+import Spline from "@splinetool/react-spline";
 
 
 const CanvasSpline = ({itemID, URLSpline}) => {

@@ -13,7 +13,8 @@ const CarruselTwo: Block = {
             type: 'relationship',
             relationTo: 'media',
             name: 'CarruselImages',
-            required: true
+            required: true,
+            hasMany: true
         }
     ]
 }

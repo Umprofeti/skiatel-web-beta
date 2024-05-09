@@ -19,7 +19,7 @@
   "dependencies": {
     "@payloadcms/db-mongodb": "beta",
     "@payloadcms/next": "beta",
-    "@payloadcms/plugin-cloud": "beta",
+    "@payloadcms/plugin-cloud": "^3.0.1",
     "@payloadcms/plugin-cloud-storage": "^1.1.2",
     "@payloadcms/plugin-form-builder": "^1.2.1",
     "@payloadcms/richtext-lexical": "beta",
