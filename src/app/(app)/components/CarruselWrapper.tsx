@@ -11,7 +11,7 @@ import '@splidejs/react-splide/css';
 const CarruselWrapper = ({data}) => {
 
     return (
-        <Splide key={data[0].id} className="w-full" aria-label="Carrusel-wrapper">
+        <Splide key={data[0].id} className="w-full bg-secondary" aria-label="Carrusel-wrapper">
             {/* Splide Data */}
             {
                 data.map((item, index) => {
@@ -28,7 +28,9 @@ const CarruselWrapper = ({data}) => {
                         case 'carruselTwo':
                             ComponentsCarrusel.push(
                                 <SplideSlide key={index}>
-                                    <CarruselSkew key={index} item={item}/>
+                                    <div className='bg-secondary'>
+                                        <CarruselSkew key={index} item={item}/>
+                                    </div>
                                 </SplideSlide>
                             )
                         break;

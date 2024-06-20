@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import CanvasSpline from "./CanvasSpline";
 
@@ -14,7 +15,7 @@ export const HeroBlock = ({ item }) => {
       <div className="w-1/2">
         {item.ShowCircleBackground ? <Circle /> : null}
         {
-          //item.SplineAnimationLink && <CanvasSpline itemID={item.id} URLSpline={item.SplineAnimationLink} />
+          item.SplineAnimationLink && <CanvasSpline itemID={item.id} URLSpline={item.SplineAnimationLink} />
         }
       </div>
     </div>

@@ -1,13 +1,16 @@
 import './globals.css'
-import { getPayload } from 'payload'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from "@payload-config";
-import {WebConfig} from './types/globals'
+import "bootstrap-icons/font/bootstrap-icons.css"
+import { Amiko } from 'next/font/google';
 
 /* Components */
 import { DesktopHeader } from './components/DesktopHeader';
 import { MobileHeader } from './components/MobileHeader';
+import SmoothScroll from './components/SmoothScroll';
 
-const payload = await getPayload({ config: configPromise })
+const amiko = Amiko({subsets: ["latin"], weight: ["600", "400", "700"]})
+const payload = await getPayloadHMR({ config: configPromise })
 
 const data = await payload.findGlobal({
   slug: 'webConfig',
@@ -33,10 +36,34 @@ export default function RootLayout({
             {/* Desktop */}
             <DesktopHeader props={data}/>
         </header>
-        <main>
-        {children}
+        <main className=' selection:bg-black selection:text-primary'>
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
         </main>
-        <footer>
+        <footer className='bg-secondary py-4 px-3 flex flex-row items-center text-white justify-between gap-6 mt-6 selection:bg-black selection:text-primary'>
+          {/* SocialMedia */}
+          <div className='flex flex-row gap-2 w-[33%] px-8'>
+            {
+              data.SocialLinks.map(social => {
+                return (
+                  <a key={social.id} href={social.url} className='text-primary text-4xl hover:scale-110 transition-all'>
+                    <i className={social.icon}></i>
+                  </a>
+                )
+              })
+            }
+          </div>
+          <div className={`${amiko.className} tracking-[.05em] text-md text-center w-[33%]`}>
+            COPYRIGHT - TODOS LOS DERECHOS RESERVADOS
+          </div>
+          {/* Contact Info */}
+          <div className='w-[33%] text-white text-xl flex flex-row gap-2 justify-end'>
+              <i className='bi bi-envelope'></i>
+              {
+                data.Email
+              }
+          </div>
         </footer>
       </body>
     </html>

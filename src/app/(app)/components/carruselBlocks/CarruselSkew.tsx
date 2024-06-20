@@ -18,7 +18,7 @@ type CarruselImages = {
 export const CarruselSkew = ({ item }: { item: CarruselTwo }) => {
 
   return (
-    <div className="w-full bg-secondary flex flex-col rounded-md gap-4 py-10 px-4">
+    <div className="w-full bg-transparent flex flex-col rounded-md gap-4 py-10 px-4">
       <h2 className="text-white font-Aeros text-center text-2xl">{item.TitleCarrusel}</h2>
       <div className="overflow-hidden">
         <GridContainer items={item.CarruselImages} />
@@ -31,12 +31,12 @@ const GridItem = ({ item }: { item: CarruselImages }) => {
   return (
     <div
       key={item.id}
-      className="w-full h-auto max-w-[250px] bg-primary mx-2 rounded-md skew-x-[34deg] skew-y-[-11deg] shadow-md py-2 px-3 hover:scale-105 transition-all"
+      className="w-full h-auto max-w-[250px] bg-primary mx-2 rounded-md skew-x-[34deg] skew-y-[-11deg] shadow-md hover:scale-105 transition-all"
     >
       <Image
         src={`http://localhost:3000${item.url}`}
         alt={item.filename}
-        className="w-full drop-shadow-md m-auto aspect-[4/3]"
+        className="w-full h-auto drop-shadow-md m-auto aspect-video rounded-md"
         width={item.width}
         height={item.height}
       />
@@ -49,7 +49,6 @@ const GridContainer = ({ items }: { items: CarruselImages[] }) => {
     let middleItems: React.ReactNode[] = []
     let firtsItem: React.ReactNode[] = []
     let lastItem: React.ReactNode[] = []
-
     items.map((item, index) => {
 
       if(index === 0) {
