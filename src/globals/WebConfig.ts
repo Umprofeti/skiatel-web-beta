@@ -13,6 +13,11 @@ const WebConfig: GlobalConfig = {
             required: true
         },
         {
+            name: 'IdDeLaPaginaDeInicio',
+            type: 'text',
+            required: true
+        },
+        {
             type: 'array',
             name: 'NavBarLinks',
             fields: [

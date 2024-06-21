@@ -7,18 +7,19 @@ const SmoothScroll = ({children}:{children:React.ReactNode}) => {
     const smoothProgress = useSpring(scrollYProgress, { mass: 0.1 })
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState(0);
+    
     useEffect(() => {
-        const handleResize = () => {
-          if (contentRef.current) {
-            setContentHeight(contentRef.current.scrollHeight)
-          }
+      const handleResize = () => {
+        if (contentRef.current) {
+          setContentHeight(contentRef.current.scrollHeight)
         }
-      
+      }
+
         handleResize();
-        window.addEventListener("resize", handleResize);
+        window.addEventListener("load", handleResize);
 
         return () => {
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("load", handleResize);
         }
       }, [contentRef, children]);
     

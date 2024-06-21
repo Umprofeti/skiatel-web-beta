@@ -30,16 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='bg-primary'>
-        <header className='mb-[7rem] !z-50 relative'>
+        <header className='!z-50 relative'>
            {/* Mobile */}
            <MobileHeader props={data}/>
             {/* Desktop */}
             <DesktopHeader props={data}/>
         </header>
         <main className=' selection:bg-black selection:text-primary'>
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
+        {children}
         </main>
         <footer className='bg-secondary py-4 px-3 flex flex-row items-center text-white justify-between gap-6 mt-6 selection:bg-black selection:text-primary'>
           {/* SocialMedia */}

@@ -2,11 +2,11 @@
 import Spline from "@splinetool/react-spline";
 
 
-const CanvasSpline = ({itemID, URLSpline}) => {
+const CanvasSpline = ({itemID, URLSpline, className}) => {
 
 
     return (
-       <Spline className="relative bottom-9 m-auto w-1/2 h-1/2 z-20" scene={`${URLSpline}`} />
+       <Spline key={itemID} className={`${className}`} scene={`${URLSpline}`} />
     )
 }
 

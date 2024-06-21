@@ -15,7 +15,7 @@ export const HeroBlock = ({ item }) => {
       <div className="w-1/2">
         {item.ShowCircleBackground ? <Circle /> : null}
         {
-          item.SplineAnimationLink && <CanvasSpline itemID={item.id} URLSpline={item.SplineAnimationLink} />
+          item.SplineAnimationLink && <CanvasSpline className={`relative bottom-9 m-auto w-1/2 h-1/2 z-20`} itemID={item.id} URLSpline={item.SplineAnimationLink} />
         }
       </div>
     </div>

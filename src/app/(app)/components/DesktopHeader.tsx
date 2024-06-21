@@ -26,7 +26,9 @@ export const DesktopHeader = ({props}:{props:DekstopHeader}) => {
             <div className='flex flex-row gap-6'>
                 {props.NavBarLinks.map(item => {
                     return (
-                           <Link className='transition-all hover:scale-110 hover:text-Active' key={item.id} href={`#${item.idSection}`}>
+                           <Link className='transition-all hover:scale-110 hover:text-Active' key={item.id} href={{
+                               pathname: `${item.idSection}`,
+                           }}>
                                 <span className='font-Aeros '>{item.Section.toUpperCase()}</span>
                             </Link>
                     )

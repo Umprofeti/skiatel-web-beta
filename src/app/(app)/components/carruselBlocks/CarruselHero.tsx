@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { getPayload } from 'payload'
 import configPromise from "@payload-config";
+import { motion } from 'framer-motion';
 
 
 

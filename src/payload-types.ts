@@ -124,21 +124,34 @@ export interface Page {
  */
 export interface Hero {
   title: string;
-  Content: string;
-  Photo: string | Media;
+  subtitle: string;
+  SplineAnimationLink: string;
+  ShowCircleBackground?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'heroTwo';
+  blockType: 'hero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Carrusel".
  */
 export interface Carrusel {
-  CarruselWrapper: (Hero | CarruselImages | CarruselTrayectory)[];
+  CarruselWrapper: (HeroTwo | CarruselImages | CarruselTrayectory)[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'carrusel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroTwo".
+ */
+export interface HeroTwo {
+  title: string;
+  Content: string;
+  Photo: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'heroTwo';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -247,6 +260,7 @@ export interface PayloadMigration {
 export interface WebConfig {
   id: string;
   Logo: string | Media;
+  IdDeLaPaginaDeInicio: string;
   NavBarLinks?:
     | {
         Section: string;
