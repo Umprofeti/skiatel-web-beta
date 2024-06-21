@@ -25,7 +25,8 @@ const Pages:CollectionConfig = {
         {
             type: 'blocks',
             name: 'Layout',
-            blocks: [ Hero, CarruselBlock, BlogReference, PortfolioReference]
+            blocks: [ Hero, CarruselBlock, BlogReference, PortfolioReference],
+            required:true
         }
     ]
 

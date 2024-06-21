@@ -26,7 +26,8 @@ const Blog: CollectionConfig = {
             blocks: [
                 RichTextBlock,
                 CodeBlock
-            ]
+            ],
+            required:true
         },
         {
             type: 'upload',
@@ -34,7 +35,8 @@ const Blog: CollectionConfig = {
             name: 'Thumbnail',
             admin: {
                 position: 'sidebar'
-            }
+            },
+            required:true
         },
         {
             type: 'textarea',
@@ -42,7 +44,8 @@ const Blog: CollectionConfig = {
             maxLength: 55,
             admin: {
                 position: 'sidebar'
-            }
+            },
+            required:true
         }
     ]
 }

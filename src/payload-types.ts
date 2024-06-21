@@ -67,9 +67,9 @@ export interface Media {
 export interface Blog {
   id: string;
   title: string;
-  Layout?: (Parrafo | BloqueDeCodigo)[] | null;
-  Thumbnail?: string | Media | null;
-  Excerpt?: string | null;
+  Layout: (Parrafo | BloqueDeCodigo)[];
+  Thumbnail: string | Media;
+  Excerpt: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -114,7 +114,7 @@ export interface BloqueDeCodigo {
 export interface Page {
   id: string;
   title: string;
-  Layout?: (Hero | Carrusel | BlogReference | PortfolioReference)[] | null;
+  Layout: (Hero | Carrusel | BlogReference | PortfolioReference)[];
   updatedAt: string;
   createdAt: string;
 }
