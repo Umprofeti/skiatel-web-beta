@@ -1,0 +1,12 @@
+canvas{
+    display: block;
+    width: 800px;
+    height: 706px;
+}
+
+@media screen and (max-width: 768px) {
+    canvas{
+        width: 400px !important;
+        height: auto !important;
+    }
+}

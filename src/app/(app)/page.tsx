@@ -38,7 +38,7 @@ const dataPortfolio = await payload.find({
 
 const Page = () => {
   return (
-    <div className="mt-[9rem]">
+    <div className="mt-[6rem] lg:mt-[9rem]">
       {data.docs !== undefined && data.docs[0].Layout.map((item) => {
         switch (item.blockType) {
           case 'hero':

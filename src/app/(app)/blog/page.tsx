@@ -23,10 +23,10 @@ const Page = () => {
             </section>
             {/* ContentSection */}
             <section className="z-30 bg-primary relative flex flex-row justify-center items-center rounded-t-md top-[-50px] py-9">
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center px-3 lg:px-0">
                     <h3 className="text-center text-xl font-Aeros">ÚLTIMAS PLUBLICACIONES</h3>
                     {/* Contenido del blog */}
-                    <div className="grid grid-cols-3 justify-center items-start px-4 w-full">  
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-start px-4 w-full">  
                         {
                             data.docs.map(item => {
                                 return (

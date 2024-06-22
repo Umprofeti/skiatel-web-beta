@@ -39,9 +39,9 @@ export default function RootLayout({
         <main className=' selection:bg-black selection:text-primary'>
         {children}
         </main>
-        <footer className='bg-secondary py-4 px-3 flex flex-row items-center text-white justify-between gap-6 mt-6 selection:bg-black selection:text-primary'>
+        <footer className='bg-secondary py-4 px-3 flex flex-col lg:flex-row items-center text-white justify-center lg:justify-between gap-6 mt-6 selection:bg-black selection:text-primary'>
           {/* SocialMedia */}
-          <div className='flex flex-row gap-2 w-[33%] px-8'>
+          <div className='flex flex-row gap-2 w-[33%] px-8 justify-center'>
             {
               data.SocialLinks.map(social => {
                 return (
@@ -56,7 +56,7 @@ export default function RootLayout({
             COPYRIGHT - TODOS LOS DERECHOS RESERVADOS
           </div>
           {/* Contact Info */}
-          <div className='w-[33%] text-white text-xl flex flex-row gap-2 justify-end'>
+          <div className='w-[33%] text-white text-xl flex flex-row gap-2 justify-center lg:justify-end'>
               <i className='bi bi-envelope'></i>
               {
                 data.Email

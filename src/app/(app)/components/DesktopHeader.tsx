@@ -10,7 +10,7 @@ type DekstopHeader = {
 export const DesktopHeader = ({props}:{props:DekstopHeader}) => {
     console.log(props.Logo.url)
     return (
-        <div className='hidden lg:flex bg-secondary text-primary flex-row w-full items-center px-4 py-2 my-4 rounded-lg justify-between shadow-md fixed top-0'>
+        <div className='hidden lg:flex bg-secondary text-primary flex-row w-full items-center px-4 py-2 lg:my-4 rounded-lg justify-between shadow-md fixed top-0'>
             {/* Logo */}
             <div className='w-[5%] rounded-full'>
                 <Link href='/' className=''>

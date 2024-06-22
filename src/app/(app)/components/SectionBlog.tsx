@@ -9,7 +9,7 @@ const actor = Actor({subsets: ["latin"], weight: ["400"]})
 
 const SectionBlock = ({title, data}: {title:string, data:PaginatedDocs<Blog>}) => {
     return(
-        <section className="bg-primary flex flex-row w-full h-auto items-center justify-center my-8 gap-10">
+        <section className="bg-primary flex flex-col lg:flex-row w-full h-auto items-center justify-center my-8 gap-10">
             <h3 className="text-center text-4xl font-Aeros flex-[0.5_1_0%]">{title}</h3>
             {/* Contenido del blog */}
             <div className="bg-secondary py-5 px-4 text-white rounded-lg flex-1 flex flex-col justify-center items-center">
@@ -32,7 +32,7 @@ const SectionBlock = ({title, data}: {title:string, data:PaginatedDocs<Blog>}) =
                     }
                 </section>
                 <a href="/blog" className="w-full flex justify-center items-center">
-                    <button className={`rounded-full bg-primary text-secondary ${actor.className} px-3 py-2 w-[15%] hover:border-primary hover:border hover:shadow-primary hover:shadow-sm hover:text-white transition-all hover:scale-105 hover:bg-secondary`}>VER MÁS</button>
+                    <button className={`rounded-full bg-primary text-secondary ${actor.className} px-3 py-2 w-[25%] lg:w-[15%] hover:border-primary hover:border hover:shadow-primary hover:shadow-sm hover:text-white transition-all hover:scale-105 hover:bg-secondary`}>VER MÁS</button>
                 </a>
             </div>
         </section>

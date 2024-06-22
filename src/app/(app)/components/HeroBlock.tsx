@@ -1,21 +1,22 @@
 'use client'
 import React from 'react'
 import CanvasSpline from "./CanvasSpline";
+import './ajuste.css'
 
 export const HeroBlock = ({ item }) => {
   return (
     <div
       key={item.id}
-      className="w-full mt-8 flex flex-col justify-center items-center overflow-hidden"
+      className="w-full lg:mt-8 flex flex-col justify-center items-center overflow-hidden"
     >
       <div className="relative ">
-        <h2 className="text-3xl font-Aeros">{item.title}</h2>
-        <h3 className="text-xl font-Aeros text-center">{item.subtitle}</h3>
+        <h2 className="text-xl lg:text-3xl font-Aeros text-center">{item.title}</h2>
+        <h3 className="text-lg lg:text-xl font-Aeros text-center">{item.subtitle}</h3>
       </div>
-      <div className="w-1/2">
+      <div className="w-full lg:w-1/2">
         {item.ShowCircleBackground ? <Circle /> : null}
         {
-          item.SplineAnimationLink && <CanvasSpline className={`relative bottom-9 m-auto w-1/2 h-1/2 z-20`} itemID={item.id} URLSpline={item.SplineAnimationLink} />
+          item.SplineAnimationLink && <CanvasSpline className={`lg:relative lg:bottom-9 mx-auto lg:w-1/2 lg:h-1/2 z-20`} itemID={item.id} URLSpline={item.SplineAnimationLink} />
         }
       </div>
     </div>
