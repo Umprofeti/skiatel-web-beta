@@ -1,4 +1,4 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 import RichTextBlock from "../blocks/RichText";
 import CodeBlock from "../blocks/CodeBlock";
 
@@ -10,9 +10,6 @@ const Blog: CollectionConfig = {
     },
     access: {
         read: () => true,
-        update: () => true,
-        delete: () => true,
-        create: () => true
     },
     fields: [
         {

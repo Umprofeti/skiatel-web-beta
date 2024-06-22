@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'aeros';
-    src: url('/public/aeros-font/Aeros-rg5WA.ttf') format('truetype');
+    src: url('/aeros-font/Aeros-rg5WA.ttf') format('truetype');
 }
 
 /* Establecer el color del scrollbar */

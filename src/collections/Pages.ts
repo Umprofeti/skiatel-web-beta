@@ -1,4 +1,4 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 import FormBlock from "../blocks/FormBlock";
 import Hero from "../blocks/Hero";
 import CarruselBlock from "../blocks/CarruselBlock";
@@ -12,9 +12,6 @@ const Pages:CollectionConfig = {
     },
     access: {
         read: () => true,
-        update: () => true,
-        delete: () => true,
-        create: () => true
     },
     fields: [
         {

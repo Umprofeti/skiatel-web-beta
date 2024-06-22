@@ -8,6 +8,7 @@ import RichText from "../../components/RichText";
 import CodeWrapper from "../../components/CodeWrapper";
 
 
+
 type Props = {
     searchParams: {
         id: string
@@ -30,8 +31,9 @@ const dataPost= async (id: string) => await payload.find({
 
 export default async function Page({searchParams}:Props) {
     const data = await dataPost(searchParams.id)
-    let { title, createdAt, Thumbnail } = data.docs[0]
-    let dateFormat = new Date(createdAt).toLocaleDateString('es-ES', {
+    let { title, createdAt, Thumbnail }= data.docs[0]
+    let fechaCreacion:string = createdAt.toString()
+    let dateFormat = new Date(fechaCreacion).toLocaleDateString('es-ES', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

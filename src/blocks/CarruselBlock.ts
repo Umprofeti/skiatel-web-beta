@@ -1,4 +1,4 @@
-import { Block } from "payload/types";
+import { Block } from "payload";
 import HeroTwo from "./HeroTwo";
 import CarruselTwo from "./CarruselTwo";
 import CarruselThree from "./CarruselThree";

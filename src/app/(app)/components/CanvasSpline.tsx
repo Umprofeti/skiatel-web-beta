@@ -1,11 +1,14 @@
 'use client'
-import Spline from "@splinetool/react-spline";
+import React, { Suspense } from "react";
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 const CanvasSpline = ({itemID, URLSpline, className}) => {
 
 
     return (
-       <Spline key={itemID}  className={`${className}`} scene={`${URLSpline}`} />
+       <Suspense fallback={<div>Cargando animación...</div>}>
+            <Spline key={itemID}  className={`${className}`} scene={`${URLSpline}`} />
+       </Suspense>
     )
 }
 

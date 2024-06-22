@@ -3,6 +3,7 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from "@payload-config";
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Amiko } from 'next/font/google';
+import type { Metadata } from 'next';
 
 /* Components */
 import { DesktopHeader } from './components/DesktopHeader';
@@ -17,9 +18,12 @@ const data = await payload.findGlobal({
   depth: 2,
 })
 
-export const metadata = {
+export const metadata:Metadata = {
   title: data.title,
   description: data.description,
+  icons: {
+    icon: '/favicon.ico'
+  }
 }
 
 export default function RootLayout({

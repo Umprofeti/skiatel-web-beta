@@ -8,12 +8,14 @@ import Link from "next/link";
 
 const paylaod = await getPayloadHMR({ config: configPromise })
 
-const data = await paylaod.find({
-    collection: 'blog',
-    depth: 2
-})
 
-const Page = () => {
+export const revalidate = 10
+export default async function Page(){
+    const data = await paylaod.find({
+        collection: 'blog',
+        depth: 2
+    })
+    
     return (
         <div className="flex flex-col">
             {/* Hero Section */}
@@ -45,5 +47,3 @@ const Page = () => {
         </div>
     )
 }
-
-export default Page

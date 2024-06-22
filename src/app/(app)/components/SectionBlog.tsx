@@ -9,7 +9,7 @@ const actor = Actor({subsets: ["latin"], weight: ["400"]})
 
 const SectionBlock = ({title, data}: {title:string, data:PaginatedDocs<Blog>}) => {
     return(
-        <section className="bg-primary flex flex-col lg:flex-row w-full h-auto items-center justify-center my-8 gap-10">
+        <section key={32232131} className="bg-primary flex flex-col lg:flex-row w-full h-auto items-center justify-center my-8 gap-10">
             <h3 className="text-center text-4xl font-Aeros flex-[0.5_1_0%]">{title}</h3>
             {/* Contenido del blog */}
             <div className="bg-secondary py-5 px-4 text-white rounded-lg flex-1 flex flex-col justify-center items-center">

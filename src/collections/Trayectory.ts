@@ -1,12 +1,10 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 const Trayectory: CollectionConfig = {
     slug: 'trayectory',
     access: {
-        create: () => true,
         read: () => true,
-        update: () => true,
-        delete: () => true
+       
     },
     fields: [
         {

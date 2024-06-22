@@ -1,12 +1,9 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 const Portfolio: CollectionConfig = {
     slug: 'portfolio',
     access: {
-        create: () => true,
         read: () => true,
-        update: () => true,
-        delete: () => true
     },
     fields: [
         {

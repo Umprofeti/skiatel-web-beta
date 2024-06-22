@@ -1,12 +1,9 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 const Media: CollectionConfig = {
     slug:'media',
     access: {
         read: ()=> true,
-        update: ()=> true,
-        delete: ()=> true,
-        create: ()=> true
     },
     upload:{
         staticDir: 'media',
