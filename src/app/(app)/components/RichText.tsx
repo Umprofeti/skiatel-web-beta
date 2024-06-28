@@ -16,7 +16,7 @@ const RichText = ({node}) => {
     case 'root':
       return <div className="flex flex-col gap-3">{renderChildren(node.children)}</div>;
     case 'heading':
-      const HeadingTag = node.tag || 'h2';
+      const HeadingTag = node.tag == 'h1' ? 'h2':  node.tag ;
       return <HeadingTag style={{ textAlign: node.format}} className={`${Gowun.className} text-secondary font-bold text-3xl`}>{renderChildren(node.children)}</HeadingTag>;
     case 'paragraph':
       return <p className={`${Gowun.className} text-secondary`} style={{ textAlign: node.format }}>{renderChildren(node.children)}</p>;

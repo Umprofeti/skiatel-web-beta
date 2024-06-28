@@ -4,6 +4,8 @@ import configPromise from "@payload-config";
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Amiko } from 'next/font/google';
 import type { Metadata } from 'next';
+import { WithContext, WebSite } from 'schema-dts';
+import Script from 'next/script';
 
 /* Components */
 import { DesktopHeader } from './components/DesktopHeader';
@@ -23,7 +25,55 @@ export const metadata:Metadata = {
   description: data.description,
   icons: {
     icon: '/favicon.ico'
+  },
+  alternates: {
+    canonical: 'https://www.skiatel.com/'
+  },
+  metadataBase: new URL('https://www.skiatel.com/'),
+  openGraph: {
+    title: 'Skiatel Web',
+    type: 'website',
+    description: 'Web Personal de Jonathan Rodríguez',
+    url: 'https://www.skiatel.com/',
+    images: [
+      {
+        url: `${data.Logo}`,
+        alt: 'Logo Skiatel Web'
+      }
+    ],
+    locale: 'es_ES',
+  },
+  twitter: {
+    title: 'Skiatel Web',
+    description: 'Web Personal de Jonathan Rodríguez',
+    images: [
+      {
+        url: `${data.Logo}`,
+        alt: 'Logo Skiatel Web'
+      }
+    ]
   }
+}
+
+const jsonLd:WithContext<WebSite> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  mainEntity: [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.skiatel.com/"
+    },
+  ],
+  headline: "Skiatel Web",
+  image: [
+    `${data.Logo}`
+  ],
+  datePublished: "2024-06-15",
+  author: {
+    "@type": "Person",
+    name: "Jonathan Rodríguez"
+  },
+  description: "Web Personal de Jonathan Rodríguez"
 }
 
 export default function RootLayout({
@@ -33,15 +83,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script
+        id='website-schema'
+        type='application/ld+json'
+        dangerouslySetInnerHTML={
+          {__html: JSON.stringify(jsonLd)}
+        }
+      />
       <body className='bg-primary'>
         <header className='!z-50 relative'>
            {/* Mobile */}
+           <h1 className='hidden'>SKIATEL</h1>
            <MobileHeader props={data}/>
             {/* Desktop */}
             <DesktopHeader props={data}/>
         </header>
         <main className=' selection:bg-black selection:text-primary'>
+        <SmoothScroll>
         {children}
+        </SmoothScroll>
         </main>
         <footer className='bg-secondary py-4 px-3 flex flex-col lg:flex-row items-center text-white justify-center lg:justify-between gap-6 mt-6 selection:bg-black selection:text-primary'>
           {/* SocialMedia */}
@@ -49,8 +109,9 @@ export default function RootLayout({
             {
               data.SocialLinks.map(social => {
                 return (
-                  <a key={social.id} href={social.url} className='text-primary text-4xl hover:scale-110 transition-all'>
+                  <a key={social.id} href={social.url} className='text-primary text-4xl hover:scale-110 transition-all flex flex-col gap-3 justify-center items-center'>
                     <i className={social.icon}></i>
+                    <span className='text-sm'>{social.title}</span>
                   </a>
                 )
               })

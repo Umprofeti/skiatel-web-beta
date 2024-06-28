@@ -50,7 +50,7 @@ export default async function Page({searchParams}:Props) {
                         src={Thumbnail.url}
                         height={Thumbnail.height}
                         width={Thumbnail.width}
-                        alt={Thumbnail.alt}
+                        alt='Imagen Blog'
                         className="w-full max-w-[250px] mx-auto h-auto z-10 rounded-md"
                 />
             </div>
