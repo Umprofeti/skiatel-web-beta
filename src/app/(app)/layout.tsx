@@ -37,7 +37,7 @@ export const metadata:Metadata = {
     url: 'https://www.skiatel.com/',
     images: [
       {
-        url: `${data.Logo}`,
+        url: `${data.Logo.url}`,
         alt: 'Logo Skiatel Web'
       }
     ],
@@ -48,7 +48,7 @@ export const metadata:Metadata = {
     description: 'Web Personal de Jonathan Rodríguez',
     images: [
       {
-        url: `${data.Logo}`,
+        url: `${data.Logo.url}`,
         alt: 'Logo Skiatel Web'
       }
     ]
@@ -66,7 +66,7 @@ const jsonLd:WithContext<WebSite> = {
   ],
   headline: "Skiatel Web",
   image: [
-    `${data.Logo}`
+    `${data.Logo.url}`
   ],
   datePublished: "2024-06-15",
   author: {
