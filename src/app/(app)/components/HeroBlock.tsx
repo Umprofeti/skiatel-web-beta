@@ -1,9 +1,11 @@
 'use client'
 import React from 'react'
 import CanvasSpline from "./CanvasSpline";
+import Image from 'next/image';
 import './ajuste.css'
+import type { Hero } from '@/payload-types';
 
-export const HeroBlock = ({ item }) => {
+export const HeroBlock = ({ item }:{item:Hero}) => {
   return (
     <div
       key={item.id}
@@ -16,7 +18,10 @@ export const HeroBlock = ({ item }) => {
       <div className="w-full lg:w-1/2">
         {item.ShowCircleBackground ? <Circle /> : null}
         {
-          item.SplineAnimationLink && <CanvasSpline className={`lg:relative lg:bottom-9 mx-auto lg:w-1/2 lg:h-1/2 z-20`} itemID={item.id} URLSpline={item.SplineAnimationLink} />
+          item.SplineAnimationLink && <CanvasSpline className={`lg:relative lg:bottom-9 mx-auto hidden lg:block lg:w-1/2 lg:h-1/2 z-20`} itemID={item.id} URLSpline={item.SplineAnimationLink} />
+        }
+        {
+          item.SplineAnimationImage && <Image key={item.SplineAnimationImage.id} alt={item.SplineAnimationImage.filename} src={item.SplineAnimationImage.url} width={item.SplineAnimationImage.width} height={item.SplineAnimationImage.height}  className='lg:relative lg:bottom-9 mx-auto block  lg:hidden lg:w-1/2 lg:h-1/2 z-20' />
         }
       </div>
     </div>

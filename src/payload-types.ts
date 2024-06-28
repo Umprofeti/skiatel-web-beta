@@ -127,6 +127,7 @@ export interface Hero {
   subtitle: string;
   SplineAnimationLink: string;
   ShowCircleBackground?: boolean | null;
+  SplineAnimationImage: string | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';

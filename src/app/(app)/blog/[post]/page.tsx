@@ -39,7 +39,7 @@ export default async function Page({searchParams}:Props) {
         day: 'numeric'
     })
     return (
-        <section className="w-full px-10 mt-[150px] flex flex-col gap-10">
+        <section className="w-full px-10 mt-[70px] lg:mt-[150px] flex flex-col gap-10">
             <div className="w-full bg-secondary flex flex-col-reverse lg:flex-row gap-2 items-center justify-between rounded-lg py-6 px-4">
                 <div className="w-full">
                     <span className={`text-primary text-left w-full mt-10 ${amiko.className}`}>Publicado el {dateFormat}</span>
@@ -54,7 +54,7 @@ export default async function Page({searchParams}:Props) {
                         className="w-full max-w-[250px] mx-auto h-auto z-10 rounded-md"
                 />
             </div>
-            <article className="w-full bg-primary flex flex-col gap-3 px-8">
+            <article className="w-full bg-primary flex flex-col gap-3 px-2 lg:px-8 ">
                     {
                         data.docs[0].Layout.map((block) => {
                             switch (block.blockType) {

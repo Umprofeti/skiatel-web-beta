@@ -3,7 +3,9 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '@payload-config'
 import CanvasSpline from "../components/CanvasSpline";
 import ArticleBlog from "../components/articleBlog";
-import "bootstrap-icons/font/bootstrap-icons.css"
+import "bootstrap-icons/font/bootstrap-icons.css";
+import BackGround from '../../../../public/Random cube waves@1-1536x735.png'
+import Image from "next/image";
 import Link from "next/link";
 
 const paylaod = await getPayloadHMR({ config: configPromise })
@@ -21,7 +23,8 @@ export default async function Page(){
             {/* Hero Section */}
             <section className="flex flex-col justify-center items-center text-primary w-full h-auto max-h-[500px]">
                 <h2 className="text-center absolute font-Aeros text-4xl z-20">BLOG</h2>
-                <CanvasSpline className="relative max-h-[500px]" itemID={data.docs[0].id} URLSpline={'https://prod.spline.design/XVAmy2pqABwM8Oq5/scene.splinecode'} />
+                <Image className="relative max-h-[800px] w-full block lg:hidden z-10"  width={700} height={600} src={BackGround.src} alt="Fondo-Img"/>
+                <CanvasSpline className="relative max-h-[500px] hidden lg:block" itemID={data.docs[0].id} URLSpline={'https://prod.spline.design/XVAmy2pqABwM8Oq5/scene.splinecode'} />
             </section>
             {/* ContentSection */}
             <section className="z-30 bg-primary relative flex flex-row justify-center items-center rounded-t-md top-[-50px] py-9">

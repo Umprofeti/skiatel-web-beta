@@ -22,6 +22,12 @@ const Hero:Block = {
         {
             type: 'checkbox',
             name: 'ShowCircleBackground',
+        },
+        {
+            type: 'upload',
+            name: 'SplineAnimationImage',
+            relationTo: 'media',
+            required: true
         }
     ]
 }
