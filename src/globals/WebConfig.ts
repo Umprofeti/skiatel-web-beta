@@ -1,4 +1,5 @@
-import { GlobalConfig } from "payload/types";
+import { ScriptHTML } from "@/blocks/ScriptHTML";
+import { GlobalConfig } from "payload";
 
 const WebConfig: GlobalConfig = {
     slug: 'webConfig',
@@ -77,6 +78,16 @@ const WebConfig: GlobalConfig = {
             admin: {
                 position: 'sidebar'
             }
+        },
+        {
+            type: 'blocks',
+            name: 'ScriptsHeader',
+            blocks: [ScriptHTML]
+        },
+        {
+            type: 'blocks',
+            name: 'ScriptsFooter',
+            blocks: [ScriptHTML]
         }
     ]
 }

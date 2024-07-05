@@ -11,11 +11,12 @@ import Script from 'next/script';
 import { DesktopHeader } from './components/DesktopHeader';
 import { MobileHeader } from './components/MobileHeader';
 import SmoothScroll from './components/SmoothScroll';
+import type { WebConfig } from '@/payload-types';
 
 const amiko = Amiko({subsets: ["latin"], weight: ["600", "400", "700"]})
 const payload = await getPayloadHMR({ config: configPromise })
 
-const data = await payload.findGlobal({
+const data:WebConfig = await payload.findGlobal({
   slug: 'webConfig',
   depth: 2,
 })
@@ -90,6 +91,16 @@ export default function RootLayout({
           {__html: JSON.stringify(jsonLd)}
         }
       />
+      {
+        data.ScriptsHeader?.map((script, id) => {
+          console.log()
+          return <Script 
+            id={`script-header-${id}`}
+            src={script.ScriptHTML}
+            crossOrigin='anonymous'
+          />
+        })
+      }
       <body className='bg-primary'>
         <header className='!z-50 relative'>
            {/* Mobile */}

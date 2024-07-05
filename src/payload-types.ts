@@ -278,8 +278,20 @@ export interface WebConfig {
   Email: string;
   title: string;
   description: string;
+  ScriptsHeader?: Script[] | null;
+  ScriptsFooter?: Script[] | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "script".
+ */
+export interface Script {
+  ScriptHTML: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'script-html';
 }
 
 
