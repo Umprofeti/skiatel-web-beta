@@ -3,18 +3,21 @@ version: '3'
 services:
   payload:
     image: node:18-alpine
-    ports:
-      - '3000:3000'
+    expose:
+      - '3000'
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
+    command: sh -c "npm install --force && npm run build && npm start"
     env_file:
       - .env
+    networks:
+      - nginx_reverse_proxy
+
+networks:
+  nginx_reverse_proxy:
+    external: true
 
 volumes:
-  data:
   node_modules:
