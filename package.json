@@ -8,35 +8,36 @@
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "generate:types": "payload generate:types",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@payloadcms/db-mongodb": "beta",
-    "@payloadcms/next": "beta",
-    "@payloadcms/plugin-cloud": "beta",
-    "@payloadcms/richtext-lexical": "beta",
+    "@payloadcms/db-mongodb": "latest",
+    "@payloadcms/next": "latest",
+    "@payloadcms/payload-cloud": "latest",
+    "@payloadcms/richtext-lexical": "latest",
+    "cross-env": "^7.0.3",
+    "graphql": "^16.8.1",
+    "next": "15.0.3",
+    "payload": "latest",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "sharp": "0.32.6",
     "@splidejs/react-splide": "^0.7.12",
     "@splinetool/react-spline": "^4.0.0",
     "bootstrap-icons": "^1.11.3",
-    "cross-env": "^7.0.3",
     "framer-motion": "^11.2.11",
-    "graphql": "^16.8.1",
-    "next": "15.0.0-rc.0",
-    "payload": "beta",
-    "react": "^19.0.0-rc-f994737d14-20240522",
     "react-code-blocks": "^0.1.6",
-    "react-dom": "^19.0.0-rc-f994737d14-20240522",
     "resize-observer-polyfill": "^1.5.1",
-    "schema-dts": "^1.1.2",
-    "sharp": "0.32.6"
+    "schema-dts": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "@types/react": "npm:types-react@19.0.0-beta.2",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "autoprefixer": "^10.4.19",
     "dotenv": "^16.4.5",
     "eslint": "^8",
@@ -50,12 +51,14 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "npm:types-react@19.0.0-beta.2",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2"
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+      "react": "19.0.0-rc-66855b96-20241106"
     }
   },
   "overrides": {
-    "@types/react": "npm:types-react@19.0.0-beta.2",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-beta.2"
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "react": "19.0.0-rc-66855b96-20241106"
   }
 }

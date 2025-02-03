@@ -7,6 +7,9 @@
  */
 
 export interface Config {
+  auth: {
+    users: UserAuthOperations;
+  };
   collections: {
     users: User;
     media: Media;
@@ -14,15 +17,56 @@ export interface Config {
     pages: Page;
     trayectory: Trayectory;
     portfolio: Portfolio;
+    'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
+  };
+  collectionsJoins: {};
+  collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    blog: BlogSelect<false> | BlogSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    trayectory: TrayectorySelect<false> | TrayectorySelect<true>;
+    portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+  };
+  db: {
+    defaultIDType: string;
   };
   globals: {
     webConfig: WebConfig;
   };
+  globalsSelect: {
+    webConfig: WebConfigSelect<false> | WebConfigSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
+  };
+  jobs: {
+    tasks: unknown;
+    workflows: unknown;
+  };
+}
+export interface UserAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
   };
 }
 /**
@@ -222,6 +266,45 @@ export interface Portfolio {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+  id: string;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'blog';
+        value: string | Blog;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'trayectory';
+        value: string | Trayectory;
+      } | null)
+    | ({
+        relationTo: 'portfolio';
+        value: string | Portfolio;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: 'users';
+    value: string | User;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -253,6 +336,221 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog_select".
+ */
+export interface BlogSelect<T extends boolean = true> {
+  title?: T;
+  Layout?:
+    | T
+    | {
+        parrafo?: T | ParrafoSelect<T>;
+        CodeBlock?: T | BloqueDeCodigoSelect<T>;
+      };
+  Thumbnail?: T;
+  Excerpt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Parrafo_select".
+ */
+export interface ParrafoSelect<T extends boolean = true> {
+  Parrafo?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BloqueDeCodigo_select".
+ */
+export interface BloqueDeCodigoSelect<T extends boolean = true> {
+  BloqueDeCodigo?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  Layout?:
+    | T
+    | {
+        hero?: T | HeroSelect<T>;
+        carrusel?: T | CarruselSelect<T>;
+        blogReference?: T | BlogReferenceSelect<T>;
+        portfolioReference?: T | PortfolioReferenceSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Hero_select".
+ */
+export interface HeroSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  SplineAnimationLink?: T;
+  ShowCircleBackground?: T;
+  SplineAnimationImage?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Carrusel_select".
+ */
+export interface CarruselSelect<T extends boolean = true> {
+  CarruselWrapper?:
+    | T
+    | {
+        heroTwo?: T | HeroTwoSelect<T>;
+        carruselTwo?: T | CarruselImagesSelect<T>;
+        carruselThree?: T | CarruselTrayectorySelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroTwo_select".
+ */
+export interface HeroTwoSelect<T extends boolean = true> {
+  title?: T;
+  Content?: T;
+  Photo?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarruselImages_select".
+ */
+export interface CarruselImagesSelect<T extends boolean = true> {
+  TitleCarrusel?: T;
+  CarruselImages?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarruselTrayectory_select".
+ */
+export interface CarruselTrayectorySelect<T extends boolean = true> {
+  TitleCarrusel?: T;
+  TrayectoryPost?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogReference_select".
+ */
+export interface BlogReferenceSelect<T extends boolean = true> {
+  Title?: T;
+  TitlePosition?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PortfolioReference_select".
+ */
+export interface PortfolioReferenceSelect<T extends boolean = true> {
+  Title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trayectory_select".
+ */
+export interface TrayectorySelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio_select".
+ */
+export interface PortfolioSelect<T extends boolean = true> {
+  title?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents_select".
+ */
+export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences_select".
+ */
+export interface PayloadPreferencesSelect<T extends boolean = true> {
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations_select".
+ */
+export interface PayloadMigrationsSelect<T extends boolean = true> {
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -292,6 +590,61 @@ export interface Script {
   id?: string | null;
   blockName?: string | null;
   blockType: 'script-html';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "webConfig_select".
+ */
+export interface WebConfigSelect<T extends boolean = true> {
+  Logo?: T;
+  IdDeLaPaginaDeInicio?: T;
+  NavBarLinks?:
+    | T
+    | {
+        Section?: T;
+        idSection?: T;
+        id?: T;
+      };
+  SocialLinks?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+        icon?: T;
+        id?: T;
+      };
+  Email?: T;
+  title?: T;
+  description?: T;
+  ScriptsHeader?:
+    | T
+    | {
+        'script-html'?: T | ScriptSelect<T>;
+      };
+  ScriptsFooter?:
+    | T
+    | {
+        'script-html'?: T | ScriptSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "script_select".
+ */
+export interface ScriptSelect<T extends boolean = true> {
+  ScriptHTML?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "auth".
+ */
+export interface Auth {
+  [k: string]: unknown;
 }
 
 

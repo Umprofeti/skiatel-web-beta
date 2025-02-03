@@ -1,5 +1,5 @@
 import React from "react";
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import CanvasSpline from "../components/CanvasSpline";
 import ArticleBlog from "../components/articleBlog";
@@ -8,7 +8,7 @@ import BackGround from '../../../../public/Random cube waves@1-1536x735.png'
 import Image from "next/image";
 import Link from "next/link";
 
-const paylaod = await getPayloadHMR({ config: configPromise })
+const paylaod = await getPayload({ config: configPromise })
 
 
 export const revalidate = 10

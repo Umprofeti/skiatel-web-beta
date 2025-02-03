@@ -1,6 +1,6 @@
 import React from 'react'
 import './globals.css'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
 import CarruselWrapper from './components/CarruselWrapper'
@@ -13,7 +13,7 @@ export const revalidate = 10
 
 
 export default async function Page() {
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const dataConfig = await payload.findGlobal({
     slug: 'webConfig',

@@ -1,5 +1,5 @@
 import React from "react";
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import configPromise from "@payload-config";
 import { Amiko } from "next/font/google";
 import Image from "next/image";
@@ -18,7 +18,7 @@ type Props = {
 
 const amiko = Amiko({subsets: ["latin"], weight: ["600", "400", "700"]})
 
-const payload = await getPayloadHMR({ config: configPromise })
+const payload = await getPayload({ config: configPromise })
 const dataPost= async (id: string) => await payload.find({
     collection: 'blog',
     depth: 2,

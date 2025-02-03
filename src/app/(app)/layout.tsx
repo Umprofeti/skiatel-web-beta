@@ -1,5 +1,5 @@
 import './globals.css'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import configPromise from "@payload-config";
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Amiko } from 'next/font/google';
@@ -14,7 +14,7 @@ import SmoothScroll from './components/SmoothScroll';
 import type { WebConfig } from '@/payload-types';
 
 const amiko = Amiko({subsets: ["latin"], weight: ["600", "400", "700"]})
-const payload = await getPayloadHMR({ config: configPromise })
+const payload = await getPayload({ config: configPromise })
 
 const data:WebConfig = await payload.findGlobal({
   slug: 'webConfig',
@@ -83,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <Script
         id='website-schema'
         type='application/ld+json'
