@@ -8,6 +8,7 @@ import '@splidejs/react-splide/css/core'
 import '@splidejs/react-splide/css';
 
 
+
 const CarruselWrapper = ({data}) => {
 
     return (
@@ -27,11 +28,14 @@ const CarruselWrapper = ({data}) => {
                         break;
                         case 'carruselTwo':
                             ComponentsCarrusel.push(
-                                <SplideSlide key={index}>
-                                    <div className='bg-secondary'>
-                                        <CarruselSkew key={index} item={item}/>
-                                    </div>
-                                </SplideSlide>
+                                <>
+                                    <SplideSlide key={index}>
+                                        <div className='bg-secondary'>
+                                            <CarruselSkew key={index} item={item}/>
+                                        </div>
+                                    </SplideSlide>
+                                    
+                                </>
                             )
                         break;
                         case 'carruselThree':

@@ -1,44 +1,49 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Media } from '@/payload-types';
 
 interface CarouselRowProps {
-    items: { src: string, alt: string, width: number, height: number }[];
-    direction: 'left' | 'right';
-    onNavigate: (direction: 'left' | 'right') => void;
+    items: Media[];
+    directionI: 'left' | 'right';
 }
 
-const CarouselRow: React.FC<CarouselRowProps> = ({ items, direction, onNavigate }) => {
+const CarouselRow: React.FC<CarouselRowProps> = ({ items, directionI }) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        const scrollAmount = directionI === 'left' ? -1 : 1;
+        const scrollInterval = setInterval(() => {
             if (scrollRef.current) {
-                if (direction === 'left') {
-                    scrollRef.current.scrollLeft -= 1;
+                const newScrollLeft = scrollRef.current.scrollLeft + scrollAmount;
+
+                if (newScrollLeft <= 0) {
+                    scrollRef.current.scrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+                } else if (newScrollLeft >= scrollRef.current.scrollWidth - scrollRef.current.clientWidth) {
+                    scrollRef.current.scrollLeft = 0;
                 } else {
-                    scrollRef.current.scrollLeft += 1;
+                    scrollRef.current.scrollLeft = newScrollLeft;
                 }
             }
-        }, 10);
+        }, 30); // Aproximadamente 60 FPS
 
-        return () => clearInterval(interval);
-    }, [direction]);
+        return () => clearInterval(scrollInterval);
+    }, [directionI]);
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-            {direction === 'left' && (
-                <button onClick={() => onNavigate('left')}>{"<-"}</button>
-            )}
-            <div ref={scrollRef} style={{ display: 'flex', overflowX: 'auto', scrollBehavior: 'smooth' }}>
+        <div className='w-[400px] sm:w-[550px] md:w-[700px]' style={{ display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+            <motion.div
+                ref={scrollRef}
+                style={{ display: 'flex', overflowX: 'hidden', width: '900%' }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+            >
                 {items.map((item, index) => (
-                    <div key={index} style={{ minWidth: '100px', margin: '0 5px' }}>
-                        <Image src={item.src} alt={item.alt} width={item.width} height={item.height} />
+                    <div className='mx-3' key={index} style={{ minWidth: '300px', maxWidth: '300px' }}>
+                        <Image className='object-cover' src={item.url ?? ''} alt={item.filename ?? ''} width={item.width ?? 100} height={item.height ?? 100} />
                     </div>
                 ))}
-            </div>
-            {direction === 'right' && (
-                <button onClick={() => onNavigate('right')}>{'->'}</button>
-            )}
+            </motion.div>
         </div>
     );
 };

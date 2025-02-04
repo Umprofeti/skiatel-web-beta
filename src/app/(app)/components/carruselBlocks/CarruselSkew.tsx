@@ -18,7 +18,7 @@ type CarruselImages = {
 export const CarruselSkew = ({ item }: { item: CarruselTwo }) => {
 
   return (
-    <div className="w-full bg-transparent flex flex-col rounded-md gap-4 py-10 px-4">
+    <div className="w-full bg-transparent lg:flex flex-col rounded-md gap-4 py-10 px-4 hidden ">
       <h2 className="text-white font-Aeros text-center text-2xl">{item.TitleCarrusel}</h2>
       <div className="overflow-hidden">
         <GridContainer items={item.CarruselImages} />

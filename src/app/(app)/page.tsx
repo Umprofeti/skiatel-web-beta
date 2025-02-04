@@ -8,6 +8,7 @@ import { HeroBlock } from './components/HeroBlock'
 import SectionBlock from './components/SectionBlog'
 import Portfolio from './components/Portfolio'
 import type { Page } from '@/payload-types'
+import Carousel from './components/carruselMovil/carruselMovil'
 
 export const revalidate = 10
 
