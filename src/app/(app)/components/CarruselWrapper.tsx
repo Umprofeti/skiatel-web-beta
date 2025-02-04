@@ -7,8 +7,6 @@ import {CarruselSkew} from './carruselBlocks/CarruselSkew';
 import '@splidejs/react-splide/css/core'
 import '@splidejs/react-splide/css';
 
-
-
 const CarruselWrapper = ({data}) => {
 
     return (
@@ -21,49 +19,29 @@ const CarruselWrapper = ({data}) => {
                     switch (item.blockType) {
                         case 'heroTwo':
                             ComponentsCarrusel.push(
-                                <SplideSlide key={index}>
-                                    <CarruselHero key={index} data={item}/>
+                                <SplideSlide key={`heroTwo-${index}`}>
+                                    <CarruselHero key={`heroTwo-${index}`} data={item}/>
                                 </SplideSlide>
                             )
                         break;
                         case 'carruselTwo':
                             ComponentsCarrusel.push(
-                                <>
-                                    <SplideSlide key={index}>
-                                        <div className='bg-secondary'>
-                                            <CarruselSkew key={index} item={item}/>
-                                        </div>
-                                    </SplideSlide>
-                                    
-                                </>
-                            )
-                        break;
-                        case 'carruselThree':
-                            ComponentsCarrusel.push(
-                                <SplideSlide key={index}>
-                                   <span>Hola</span>
+                                <SplideSlide key={`carruselTwo-${index}`}>
+                                    <div key={`containerVariant-2-${index}`} className='bg-secondary'>
+                                        <CarruselSkew key={`carruselTwo-${index}`} item={item}/>
+                                    </div>
                                 </SplideSlide>
                             )
                         break;
-
                         default:
-                            ComponentsCarrusel.push(
-                                <SplideSlide key={index}>
-                                    <span key={index}>Hola</span>
-                                </SplideSlide>
-                            )
+                            break;
                     }
 
-                    return (
-                        ComponentsCarrusel.map((item) => {
-                            return item
-                        })
-                    )
+                    return ComponentsCarrusel;
                 })
             }
         </Splide>
     )
-
 }
 
-export default CarruselWrapper
+export default CarruselWrapper;
